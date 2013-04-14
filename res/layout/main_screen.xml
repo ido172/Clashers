@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+	android:gravity="center">
+    
+	<Button
+	    	android:visibility="gone"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/refresh_main"
+	    	android:id="@+id/refresh_main">
+	</Button>
+	<LinearLayout	
+	    	android:id="@+id/no_connection_container"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical"
+	    	android:clickable="true"
+	    	android:gravity="center"
+	    	android:visibility="gone">
+	    <TextView
+	    android:id="@+id/no_connection"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/no_connenction_text">  
+	    </TextView>
+	    <Button
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/retry_to_connect"
+	    	android:id="@+id/connection_retry_btn">
+	    </Button>
+    </LinearLayout>
+    
+	<ScrollView
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:fillViewport="true"
+	    android:visibility="gone"
+	    android:id="@+id/main_container">
+
+	    <LinearLayout
+	         
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical"
+	    	android:clickable="true"
+	    	android:id="@+id/users_container">
+	    	
+	    </LinearLayout> 
+	</ScrollView>
+</LinearLayout>

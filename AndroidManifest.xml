@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.clashers"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Creates a custom permission so only this app can receive its messages. -->
+    <permission
+        android:name="com.clashers.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.clashers.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.clashers.activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.clashers.activities.PlayerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+
+        <service
+            android:name="com.clashers.services.LocalService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="@string/app_name" />
+        <service
+            android:name="com.clashers.services.MetadataService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="@string/app_name" />
+        <service
+            android:name="com.clashers.services.LocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="@string/app_name" />
+        <service
+            android:name="com.clashers.services.SenderService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="@string/app_name" />
+        <service
+            android:name="com.clashers.services.BGService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false"
+            android:label="@string/app_name" />
+        <service
+            android:name=".GCMIntentService"/>
+
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.clashers" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver
+            android:name="com.clashers.receivers.Alarm"
+            android:process=":remote" >
+        </receiver>
+        <receiver android:name="com.clashers.receivers.BootCompletedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>
+    </application>
+
+</manifest>
